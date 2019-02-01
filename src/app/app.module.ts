@@ -14,6 +14,7 @@ import { TodoModule } from './todo/todo.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { LoginModule } from './login/login.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LoginModule } from './login/login.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    CoreModule,
     TodoModule,
     LoginModule,
     MaterialModule,
