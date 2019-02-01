@@ -33,7 +33,7 @@ export class TodoService {
     todo.createdAt = timestamp;
 
     return this.af.collection('todos').add({
-      title: todo.title,
+      title: '',
       description: todo.description,
       createdAt: todo.createdAt
     });
