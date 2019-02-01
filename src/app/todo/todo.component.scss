@@ -1,0 +1,13 @@
+.wrapper {
+  margin-top: 15px;
+  .todo-grid {
+    grid-column: 5/9;
+    grid-row: 2;
+    ::ng-deep .mat-card-header-text {
+      margin: 0 !important;
+    }
+    .full {
+      width: 100%;
+    }
+  }
+}
