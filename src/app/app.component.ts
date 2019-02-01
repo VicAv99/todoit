@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from './core/auth/auth.service';
+import { Observable } from 'rxjs';
+import { User } from './shared/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +12,27 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class AppComponent {
   title = 'Todo It';
+  userInstance$: Observable<User>;
+  links = [
+    { path: '/todos', icon: 'loyalty', label: 'TODOS' }
+  ];
 
-  constructor(private afAuth: AngularFireAuth) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.userInstance$ = authService.user;
+  }
+
+  login() {
+    this.authService.login();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  routeToLogin() {
+    this.router.navigateByUrl('/login');
+  }
 }
