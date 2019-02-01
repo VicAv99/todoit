@@ -15,7 +15,7 @@ export class TodoService {
   }
 
   all() {
-    this.todoCollection.snapshotChanges()
+    return this.todoCollection.snapshotChanges()
       .pipe(map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data() as Todo;
@@ -32,7 +32,7 @@ export class TodoService {
     const timestamp = new Date().getTime();
     todo.createdAt = timestamp;
 
-    this.af.collection('todos').add({
+    return this.af.collection('todos').add({
       title: todo.title,
       description: todo.description,
       createdAt: todo.createdAt
@@ -44,7 +44,7 @@ export class TodoService {
     this.individualTodo.update(todo);
   }
 
-  delete(id: string) {
-    this.af.doc(`todos/${id}`);
+  delete(id: any) {
+    return this.af.doc(`todos/${id}`);
   }
 }
