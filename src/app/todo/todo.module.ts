@@ -4,9 +4,10 @@ import { Route, RouterModule } from '@angular/router';
 
 import { TodoComponent } from './todo.component';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuard } from '../core/auth/auth.guard';
 
 const routes: Route[] = [
-  { path: 'todos', component: TodoComponent }
+  { path: 'todos', component: TodoComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
