@@ -1,37 +1,36 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 
-import * as todoReducers from './todo/todo.reducer';
+import * as fromTodos from './todo/todo.reducer';
 import { Todo } from '../shared/models/todo.model';
 
-// tslint:disable-next-line:no-empty-interface
 export interface AppState {
-
+  todos: fromTodos.TodosState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  todos: todoReducers
+  todos: fromTodos.todosReducer
 };
 
 // -------------------------------------------------------------------
 // TODOS SELECTORS
 // -------------------------------------------------------------------
-export const selectTodosState = createFeatureSelector<todoReducers.TodosState>('todos');
+export const selectTodosState = createFeatureSelector<fromTodos.TodosState>('todos');
 
 export const selectTodoIds = createSelector(
   selectTodosState,
-  todoReducers.selectTodoIds
+  fromTodos.selectTodoIds
 );
 export const selectTodoEntities = createSelector(
   selectTodosState,
-  todoReducers.selectTodoEntities
+  fromTodos.selectTodoEntities
 );
 export const selectAllTodos = createSelector(
   selectTodosState,
-  todoReducers.selectAllTodos
+  fromTodos.selectAllTodos
 );
 export const selectCurrentTodoId = createSelector(
   selectTodosState,
-  todoReducers.getSelectedTodoId
+  fromTodos.getSelectedTodoId
 );
 
 const emptyTodo: Todo = {

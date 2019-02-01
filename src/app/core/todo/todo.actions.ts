@@ -14,10 +14,6 @@ export enum TodosActionTypes {
   TodoDeleted = '[Todos] Data Deleted'
 }
 
-export class Todos implements Action {
-  readonly type = TodosActionTypes.TodosAction;
-}
-
 export class TodoSelected implements Action {
   readonly type = TodosActionTypes.TodoSelected;
   constructor(public payload) {}
@@ -64,7 +60,6 @@ export class TodoDeleted implements Action {
 }
 
 export type TodosActions =
-  | Todos
   | TodoSelected
   | LoadTodos
   | TodosLoaded

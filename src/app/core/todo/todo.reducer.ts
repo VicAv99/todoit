@@ -12,7 +12,7 @@ export const initialState: TodosState = adapter.getInitialState({
   selectedTodoId: null,
 });
 
-export function TodosReducer(state = initialState, action: TodosActions): TodosState {
+export function todosReducer(state = initialState, action: TodosActions): TodosState {
   switch (action.type) {
     case TodosActionTypes.TodoSelected: {
       return Object.assign({}, state, { selectedTodoId: action.payload });
