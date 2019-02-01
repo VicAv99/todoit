@@ -43,7 +43,9 @@ export class TodoService {
     this.individualTodo.update(todo);
   }
 
-  delete(id: any) {
-    return this.af.doc(`todos/${id}`);
+  delete(todo: any) {
+    this.af.doc(`todos/${todo.id}`);
+
+    return todo;
   }
 }

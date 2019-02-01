@@ -31,7 +31,7 @@ export class TodoComponent implements OnInit {
   }
 
   deleteTodo(todo: any) {
-    this.todoFacade.deleteTodo(todo.id);
+    this.todoFacade.deleteTodo(todo);
   }
 
   private initForm() {

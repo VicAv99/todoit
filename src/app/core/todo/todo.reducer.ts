@@ -31,7 +31,7 @@ export function todosReducer(state = initialState, action: TodosActions): TodosS
     }
 
     case TodosActionTypes.TodoDeleted: {
-      return adapter.removeOne(action.payload.id.toString(), state);
+      return adapter.removeOne(action.payload.id, state);
     }
 
     default:

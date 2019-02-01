@@ -1,5 +1,10 @@
 <mat-list>
-  <mat-list-item *ngFor="let todo of todos">
-    {{todo.description}}
+  <mat-list-item *ngFor="let todo of todos" class="mat-list-option">
+    <small mat-line>{{todo.createdAt | date}}</small>
+    <p mat-line>{{todo.description}}</p>
+    <button mat-icon-button color="accent" class="mat-pseudo-checkbox"
+      (click)="deleteTodo(todo)">
+      <mat-icon>clear</mat-icon>
+    </button>
   </mat-list-item>
 </mat-list>
