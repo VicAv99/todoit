@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 import { take, map, tap } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user.model';
 import { CoreModule } from '../core.module';
+import { NotificationsService } from 'src/app/shared/notifications/notifications.service';
 
 @Injectable({
   providedIn: CoreModule
@@ -12,7 +13,8 @@ import { CoreModule } from '../core.module';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private notificationsService: NotificationsService
   ) {}
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -23,7 +25,7 @@ export class AuthGuard implements CanActivate {
       map((user: User) => !!user),
       tap((loggedIn: boolean) => {
         if (!loggedIn) {
-          console.log('access denied');
+          this.notificationsService.notify('You are not authorized', 'Sorry');
           this.router.navigateByUrl('/login');
         }
       })
