@@ -6,9 +6,14 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { MaterialModule } from './shared/material/material.module';
+import { RoutingModule } from './routing.module';
+
+import { TodoModule } from './todo/todo.module';
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +26,10 @@ import { environment } from 'src/environments/environment';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    TodoModule,
+    LoginModule,
+    MaterialModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
