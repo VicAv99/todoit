@@ -8,7 +8,7 @@
         </app-todo-details>
       </mat-card-header>
       <mat-card-content>
-        <app-todo-list></app-todo-list>
+        <app-todo-list [todos]="todos$ | async"></app-todo-list>
       </mat-card-content>
     </mat-card>
   </div>

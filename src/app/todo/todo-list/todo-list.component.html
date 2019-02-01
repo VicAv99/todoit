@@ -1,3 +1,5 @@
-<p>
-  todo-list works!
-</p>
+<mat-list>
+  <mat-list-item *ngFor="let todo of todos">
+    {{todo.description}}
+  </mat-list-item>
+</mat-list>

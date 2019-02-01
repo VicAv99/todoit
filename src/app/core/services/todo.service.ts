@@ -10,32 +10,31 @@ export class TodoService {
   todoCollection: AngularFirestoreCollection<Todo>;
   individualTodo: AngularFirestoreDocument;
 
-  constructor(private af: AngularFirestore) {
-    this.todoCollection = this.af.collection('todos');
-  }
+  constructor(private af: AngularFirestore) { }
 
   all() {
+    this.todoCollection = this.af.collection('todos');
+    this.todoCollection.stateChanges().subscribe();
     return this.todoCollection.snapshotChanges()
       .pipe(map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data() as Todo;
           const id = a.payload.doc.id;
 
-          return { id, data };
+          return { id, ...data };
         }).sort((a: any, b: any) => {
-          return a.data.createdAt - b.data.createdAt;
+          return a.createdAt - b.createdAt;
         });
       }));
   }
 
   create(todo: Todo) {
-    const timestamp = new Date().getTime();
-    todo.createdAt = timestamp;
+    const createdAt = new Date().getTime();
 
     return this.af.collection('todos').add({
       title: '',
       description: todo.description,
-      createdAt: todo.createdAt
+      createdAt
     });
   }
 
