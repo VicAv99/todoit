@@ -1,3 +1,18 @@
-<p>
-  login works!
-</p>
+<div class="login">
+  <div class="wrapper">
+    <div class="login-grid">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Welcome to TodoIt!</mat-card-title>
+          <mat-card-subtitle>please Login</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions fxLayout="row-reverse" fxLayoutAlign="start start" fxLayoutGap="gappx">
+          <button mat-raised-button type="button"
+            (click)="login()" color="primary">
+            Login with Google
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

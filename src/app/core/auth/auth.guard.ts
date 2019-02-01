@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { take, map, tap } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user.model';
+import { CoreModule } from '../core.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: CoreModule
 })
 export class AuthGuard implements CanActivate {
   constructor(
@@ -17,13 +18,13 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    return this.authService.user.pipe(
+    return this.authService.user$.pipe(
       take(1),
       map((user: User) => !!user),
       tap((loggedIn: boolean) => {
         if (!loggedIn) {
           console.log('access denied');
-          this.router.navigateByUrl('./login');
+          this.router.navigateByUrl('/login');
         }
       })
     );

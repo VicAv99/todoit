@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
   <span>
     <button mat-mini-fab *ngIf="userInstance$ | async" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
@@ -7,7 +7,7 @@
       Route That Thang!
     </span>
   </span>
-  <button (click)="routeToLogin()" *ngIf="userInstance$ | async" mat-mini-fab>
+  <button (click)="logout()" *ngIf="userInstance$ | async" mat-mini-fab>
     <mat-icon>person</mat-icon>
   </button>
 </mat-toolbar>
@@ -16,14 +16,14 @@
   <mat-sidenav #sidenav mode="side" class="app-sidenav">
     <nav>
       <a mat-button
-          class="nav-link"
-          *ngFor="let link of links"
-          [routerLink]="link.path"
-          routerLinkActive="active">
-        {{link.label}}
-      </a>
-    </nav>
-  </mat-sidenav>
+        class="nav-link"
+        *ngFor="let link of links"
+        [routerLink]="link.path"
+        routerLinkActive="active">
+      {{link.label}}
+    </a>
+  </nav>
+</mat-sidenav>
 
   <router-outlet></router-outlet>
 </mat-sidenav-container>

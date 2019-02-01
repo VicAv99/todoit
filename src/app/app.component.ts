@@ -21,18 +21,12 @@ export class AppComponent {
     private authService: AuthService,
     private router: Router
   ) {
-    this.userInstance$ = authService.user;
-  }
-
-  login() {
-    this.authService.login();
+    this.userInstance$ = authService.user$;
   }
 
   logout() {
-    this.authService.logout();
-  }
-
-  routeToLogin() {
-    this.router.navigateByUrl('/login');
+    this.authService.logout().then(() => {
+      this.router.navigateByUrl('/login');
+    });
   }
 }

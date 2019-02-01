@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { LoginModule } from './login/login.module';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { CoreModule } from './core/core.module';
     CoreModule,
     TodoModule,
     LoginModule,
-    MaterialModule,
+    SharedModule,
     RoutingModule
   ],
   providers: [],
