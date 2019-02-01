@@ -25,23 +25,23 @@ export class TodosFacade {
 
   constructor(private store: Store<TodosState>, private actions$: ActionsSubject) {}
 
-  selectTodo(itemId: any) {
-    this.store.dispatch(new TodosActions.TodoSelected(itemId));
+  selectTodo(todoId: any) {
+    this.store.dispatch(new TodosActions.TodoSelected(todoId));
   }
 
   loadTodos() {
     this.store.dispatch(new TodosActions.LoadTodos());
   }
 
-  addTodo(item: any) {
-    this.store.dispatch(new TodosActions.AddTodo(item));
+  addTodo(todo: any) {
+    this.store.dispatch(new TodosActions.AddTodo(todo));
   }
 
-  updateTodo(item: any) {
-    this.store.dispatch(new TodosActions.UpdateTodo(item));
+  updateTodo(todo: any) {
+    this.store.dispatch(new TodosActions.UpdateTodo(todo));
   }
 
-  deleteTodo(item: any) {
-    this.store.dispatch(new TodosActions.DeleteTodo(item));
+  deleteTodo(todo: any) {
+    this.store.dispatch(new TodosActions.DeleteTodo(todo));
   }
 }

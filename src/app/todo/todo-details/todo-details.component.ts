@@ -17,8 +17,8 @@ export class TodoDetailsComponent {
 
   constructor() { }
 
-  addTodo() {
-    this.added.emit(this.group.value);
+  addTodo(todo: Todo) {
+    this.added.emit(todo);
   }
 
 }

@@ -47,8 +47,9 @@ export class TodosEffects {
   @Effect()
   updateProject$ = this.dataPersistence.pessimisticUpdate(TodosActionTypes.UpdateTodo, {
     run: (action: UpdateTodo, state: TodosState) => {
-      return of(this.todoService.update(action.payload)).pipe(
-        map((res: any) => new TodoUpdated(res))
+      // No clue why this works only like this...
+      return of(this.todoService.update(action.payload.id).update(action.payload)).pipe(
+        map((res: any) => new TodoUpdated(action.payload))
       );
     },
 
@@ -60,7 +61,7 @@ export class TodosEffects {
   @Effect()
   deleteTodo$ = this.dataPersistence.pessimisticUpdate(TodosActionTypes.DeleteTodo, {
     run: (action: DeleteTodo, state: TodosState) => {
-      return of(this.todoService.delete(action.payload)).pipe(
+      return of(this.todoService.delete(action.payload).delete()).pipe(
         map(_ => new TodoDeleted(action.payload))
       );
     },

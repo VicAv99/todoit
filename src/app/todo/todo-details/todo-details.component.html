@@ -3,7 +3,7 @@
     <input matInput placeholder="What needs to get done?"
       formControlName="description" >
   </mat-form-field>
-  <button (click)="addTodo()" color="primary" mat-mini-fab>
+  <button (click)="addTodo(group.value)" color="primary" mat-mini-fab>
     <mat-icon>add</mat-icon>
   </button>
 </form>

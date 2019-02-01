@@ -25,7 +25,13 @@ export class TodoComponent implements OnInit {
     this.initForm();
   }
 
+  selectTodo(todo: Todo) {
+    this.todoFacade.selectTodo(todo.id);
+    this.form.patchValue(todo);
+  }
+
   saveTodo(todo: any) {
+    console.log(todo);
     todo.id ? this.todoFacade.updateTodo(todo) :
       this.todoFacade.addTodo(todo);
   }
@@ -36,6 +42,7 @@ export class TodoComponent implements OnInit {
 
   private initForm() {
     this.form = this.formBuilder.group({
+      id: [null],
       description: ['', Validators.required]
     });
   }

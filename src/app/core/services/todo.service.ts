@@ -38,14 +38,11 @@ export class TodoService {
     });
   }
 
-  update(todo: Todo) {
-    this.individualTodo = this.af.doc(`todos/${todo.id}`);
-    this.individualTodo.update(todo);
+  update(todo: any) {
+    return this.af.doc(`todos/${todo}`);
   }
 
   delete(todo: any) {
-    this.af.doc(`todos/${todo.id}`);
-
-    return todo;
+    return this.af.doc(`todos/${todo.id}`);
   }
 }

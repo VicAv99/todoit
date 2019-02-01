@@ -9,8 +9,13 @@ import { Todo } from 'src/app/shared/models/todo.model';
 export class TodoListComponent {
   @Input() todos: Todo[];
   @Output() deleted = new EventEmitter();
+  @Output() selected = new EventEmitter();
 
   constructor() { }
+
+  selectTodo(todo: Todo) {
+    this.selected.emit(todo);
+  }
 
   deleteTodo(todo: any) {
     this.deleted.emit(todo);

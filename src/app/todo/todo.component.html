@@ -4,11 +4,13 @@
       <mat-card-header>
         <app-todo-details class="full"
                           [group]="form"
+                          [todo]="currentTodo$ | async"
                           (added)="saveTodo($event)">
         </app-todo-details>
       </mat-card-header>
       <mat-card-content>
         <app-todo-list [todos]="todos$ | async"
+                        (selected)="selectTodo($event)"
                         (deleted)="deleteTodo($event)">
         </app-todo-list>
       </mat-card-content>
